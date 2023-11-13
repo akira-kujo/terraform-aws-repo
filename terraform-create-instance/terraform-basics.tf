@@ -1,4 +1,5 @@
-# Terraform Block (begins with '{')
+# Terraform Block (begins with '{'
+# keep the terraform providers version as unlocked (flexible)
 
 terraform {
   required_version = "~> 1.6" # Allows versions that are 1.6.* but not 2.*
