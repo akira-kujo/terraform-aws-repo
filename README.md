@@ -9,6 +9,9 @@
 
 * Packages of Terraform configuration managed as a group
 * e.g. VPC module pack is able to configure all contents related to VPC (subnets, IP, DNS, Gateways etc)
+* e.g. main.tf contains the main configuration for the module (where VPC resources are configured)
+  * variables.tf is used to parameterise the module (variables configured)
+  * outputs.tf is a way for a module to return info to the configuration thats calling
 
 ### Terraform Version Constraints
 * Locked in versions for when you're using Terraform modules
