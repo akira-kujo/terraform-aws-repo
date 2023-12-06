@@ -40,7 +40,7 @@ variable "vpc_create_database_subnet_group"{
     default = true
 }
 
-variable "vpc_create_database_route_table"{
+variable "vpc_create_database_subnet_route_table"{
     description = "VPC Database Route Table"
     type = bool
     default = true
