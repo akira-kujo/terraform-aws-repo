@@ -13,7 +13,7 @@ variable "vpc_cidr_block"{
 variable "vpc_availability_zones"{
     description = "VPC availability zone"
     type = list(string)
-    default = ["us-east1a","us-east-1b"]
+    default = ["us-east-1a","us-east-1b"]
 }
 
 variable "vpc_public_subnets"{

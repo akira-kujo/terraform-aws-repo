@@ -8,8 +8,6 @@ locals {
     common_tags = {
         owners = local.owners // SAP from 2-generic-variables
         environment = local.environment // dev
-
-        tags = local.common_tags
-        vpc_tags = local.common_tags // values will be from locals/common_tags in local-values
+ // values will be from locals/common_tags in local-values
     }
 }
