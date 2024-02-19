@@ -1,5 +1,5 @@
 module "ec2_private" {
-  depends_on = [module.vpc] # vpc + nat gw must be created before private ec2 for internet access
+  depends_on = [module.vpc] # vpc + nat gw must be created before private ec2 for internet access or user data will fail
   
   source  = "terraform-aws-modules/ec2-instance/aws"
   version = "5.6.0"
@@ -13,17 +13,12 @@ module "ec2_private" {
   instance_type          = var.instance_type
   key_name               = var.instance_keypair
   monitoring             = true
-  vpc_security_group_ids = module.private_sg_group_vpc_id
-
+  vpc_security_group_ids = [module.private_sg.security_group_vpc_id]
   user_data = file("${path.module}/app1.sh")
+  tags = local.common_tags
   # create 2 instances with 2 different subnet ids
 
-  subnet_id = element(module.vpc.private_subnets, tonumber(each.key)) # convert for_each variable to ints
-  
-  tags = {
-    Terraform   = "true"
-    Environment = "dev"
-  }
+  subnet_id = element(module.vpc.private_subnets, tonumber(each.key)) # convert for_each string no's to ints
 }
 
   
