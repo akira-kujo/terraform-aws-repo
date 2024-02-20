@@ -16,8 +16,8 @@ module "ec2_private" {
   vpc_security_group_ids = [module.private_sg.security_group_vpc_id]
   user_data = file("${path.module}/app1.sh")
   tags = local.common_tags
+  
   # create 2 instances with 2 different subnet ids
-
   subnet_id = element(module.vpc.private_subnets, tonumber(each.key)) # convert for_each string no's to ints
 }
 
